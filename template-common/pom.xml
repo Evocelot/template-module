@@ -1,0 +1,32 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>hu.evocelot.template</groupId>
+        <artifactId>template</artifactId>
+        <version>0.1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>template-common</artifactId>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>template-common-jpa</module>
+        <module>template-common-rest-jee</module>
+        <module>template-common-system-jpa</module>
+        <module>template-common-system-rest</module>
+        <module>template-common-util</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>hu.evocelot.template</groupId>
+                <artifactId>bom-all</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>

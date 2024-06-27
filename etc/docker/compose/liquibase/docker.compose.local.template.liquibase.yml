@@ -1,0 +1,14 @@
+services:
+  evocelot-template-service-liquibase:
+    container_name: evocelot-template-service-liquibase
+    image: evocelot/template-service-liquibase:0.1.0
+    command: ["update"]
+    environment:
+      LIQUIBASE_CONTEXTS: local
+      LIQUIBASE_URL: jdbc:mariadb://evocelot-template-mariadb:3306/template
+      LIQUIBASE_USERNAME: root
+      LIQUIBASE_PASSWORD: admin
+      LIQUIBASE_DRIVER: org.mariadb.jdbc.Driver
+networks:
+  default:
+    name: evocelot-network

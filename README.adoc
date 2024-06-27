@@ -1,6 +1,12 @@
-= Module-base
+= template-module
 
-Basic project for backend microservices based on Jakarta and Wildfly.
+Template module, aimed at generating content based
+on templates, such as SMS messages, emails, or
+file generation according to predefined templates.
+
+The module is based on Jakarta and Wildfly technology,
+which can be easily integrated with applications
+capable of HTTP communication
 
 == Technologies Used
 
@@ -13,7 +19,7 @@ Basic project for backend microservices based on Jakarta and Wildfly.
 == Dockerhub
 
 You can find the current released Docker images here:
-link:https://hub.docker.com/repository/docker/evocelot/.../general[dockerhub]
+link:https://hub.docker.com/repository/docker/evocelot/template-service/general[dockerhub]
 
 == Directory Structure
 
@@ -83,7 +89,7 @@ As a first step, based on the provided repository, start the appropriate DBMS an
 .run-liquibase-scripts
 [source,bash]
 ----
-docker compose -f etc/docker/compose/liquibase/docker.compose.local.modulebase.liquibase.yml up -d
+docker compose -f etc/docker/compose/liquibase/docker.compose.local.template.liquibase.yml up -d
 ----
 
 == Starting the Microservice
@@ -102,7 +108,7 @@ After that, attach our built application using the following command:
 .copy-war
 [source,bash]
 ----
-docker cp modulebase-services/sample-jpa-service/target/sample-jpa-service-<VERSION>-SNAPSHOT.war evocelot-modulebase-service:/home/icellmobilsoft/wildfly/standalone/deployments/ROOT.war
+docker cp template-services/sample-jpa-service/target/sample-jpa-service-<VERSION>-SNAPSHOT.war evocelot-template-service:/home/icellmobilsoft/wildfly/standalone/deployments/ROOT.war
 ----
 
 [NOTE]

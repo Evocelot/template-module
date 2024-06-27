@@ -6,17 +6,17 @@
 :rouge-style: thankful_eyes
 :icons: font
 
-= Auth module
+= Template module
 
-The ... module application based on Jakarta and Wildfly technology, wich can be
+The template module application based on Jakarta and Wildfly technology, wich can be
 integrated into applications capable of HTTP-based communication.
 
-The aim of the project is to develop an ...
-solution that can be easily integrated into other applications.
+The aim of the project is to develop an templating solution for generating
+content based on pre-defined templates, such as messages, HTML code or file.
 
 == Architecture
 
-The main usage model for how the modulebase should be used
+The main usage model for how the template should be used
 is illustrated in the following diagram:
 
 ...
