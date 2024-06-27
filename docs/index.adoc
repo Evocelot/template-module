@@ -1,0 +1,39 @@
+:toc: left
+:toclevels: 4
+:sectnums:
+:sectnumlevels: 4
+:source-highlighter: rouge
+:rouge-style: thankful_eyes
+:icons: font
+
+= Auth module
+
+The ... module application based on Jakarta and Wildfly technology, wich can be
+integrated into applications capable of HTTP-based communication.
+
+The aim of the project is to develop an ...
+solution that can be easily integrated into other applications.
+
+== Architecture
+
+The main usage model for how the modulebase should be used
+is illustrated in the following diagram:
+
+...
+
+== Configuration
+
+To configure the application, you can use a .properties file or environment variables.
+
+Some important settings:
+
+[cols="^,^,^,^"]
+|===
+| ENV | Properties key | Sample value | Description
+
+| ... | ... | ... | ... |
+|===
+
+== Endpoints
+
+...
