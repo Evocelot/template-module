@@ -11,4 +11,8 @@
         uri="maven:hu.evocelot.template:template-api-schema:jar::!/xsd/hu/evocelot/template/api/COMMON/1.0/common.xsd" />
     <public publicId="http://api.template.evocelot.hu/SAMPLE/1.0/rest/post"
         uri="maven:hu.evocelot.template:template-api-schema:jar::!/xsd/hu/evocelot/template/api/SAMPLE/1.0/rest/post.xsd" />
+    <public publicId="http://api.template.evocelot.hu/TEMPLATEDATA/1.0/rest/templatedata"
+            uri="maven:hu.evocelot.template:template-api-schema:jar::!/xsd/hu/evocelot/template/api/TEMPLATEDATA/1.0/rest/template-data.xsd" />
+    <public publicId="http://api.template.evocelot.hu/TEMPLATEPARAMETER/1.0/rest/templateparameter"
+            uri="maven:hu.evocelot.template:template-api-schema:jar::!/xsd/hu/evocelot/template/api/TEMPLATEPARAMETER/1.0/rest/template-parameter.xsd" />
 </catalog>

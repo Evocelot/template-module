@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Deploy sample-jpa-service WAR to WildFly container" type="ShConfigurationType">
-    <option name="SCRIPT_TEXT" value="docker cp template-services/sample-jpa-service/target/sample-jpa-service-0.1.0-SNAPSHOT.war evocelot-template-service:/home/icellmobilsoft/wildfly/standalone/deployments/ROOT.war" />
+  <configuration default="false" name="Deploy template-service WAR to WildFly container" type="ShConfigurationType">
+    <option name="SCRIPT_TEXT" value="docker cp template-services/template-service/target/template-service-0.1.0-SNAPSHOT.war evocelot-template-service:/home/icellmobilsoft/wildfly/standalone/deployments/ROOT.war" />
     <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
     <option name="SCRIPT_PATH" value="" />
     <option name="SCRIPT_OPTIONS" value="" />

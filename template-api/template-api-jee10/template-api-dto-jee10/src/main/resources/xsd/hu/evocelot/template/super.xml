@@ -6,4 +6,6 @@
     <xs:import namespace="http://api.template.evocelot.hu/COMMON/1.0/common"/>
 
     <xs:import namespace="http://api.template.evocelot.hu/SAMPLE/1.0/rest/post"/>
+    <xs:import namespace="http://api.template.evocelot.hu/TEMPLATEDATA/1.0/rest/templatedata"/>
+    <xs:import namespace="http://api.template.evocelot.hu/TEMPLATEPARAMETER/1.0/rest/templateparameter"/>
 </xs:schema>
