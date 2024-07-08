@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://api.template.evocelot.hu/TEMPLATEPARAMETER/1.0/rest/templateparameter"
+            xmlns:coffeeCommon="http://common.dto.coffee.icellmobilsoft.hu/common"
+            xmlns:coffeeCommonservice="http://common.dto.coffee.icellmobilsoft.hu/commonservice"
+            targetNamespace="http://api.template.evocelot.hu/TEMPLATEPARAMETER/1.0/rest/templateparameter"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+    <xsd:import namespace="http://common.dto.coffee.icellmobilsoft.hu/common"/>
+    <xsd:import namespace="http://common.dto.coffee.icellmobilsoft.hu/commonservice"/>
+
+    <!-- SIMPLE TYPES -->
+    <xsd:complexType name="TemplateParameterCoreType">
+        <xsd:sequence>
+            <xsd:element name="templateKey" type="coffeeCommon:EntityIdType">
+                <xsd:annotation>
+                    <xsd:documentation>The key of the template, the owner of the parameter.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="language" type="coffeeCommon:SimpleText5NotBlankType">
+                <xsd:annotation>
+                    <xsd:documentation>The language of the template</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="parameterKey" type="coffeeCommon:SimpleText128NotBlankType">
+                <xsd:annotation>
+                    <xsd:documentation>The unique identifier of the parameter.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="defaultValue" type="coffeeCommon:SimpleText255NotBlankType">
+                <xsd:annotation>
+                    <xsd:documentation>The default value of the parameter.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="TemplateParameterType">
+        <xsd:complexContent>
+            <xsd:extension base="TemplateParameterCoreType">
+                <xsd:sequence>
+                    <xsd:element name="templateParameterId" type="coffeeCommon:EntityIdType">
+                        <xsd:annotation>
+                            <xsd:documentation>The unique identifier of the template parameter.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="TemplateParameterRenderType">
+        <xsd:sequence>
+            <xsd:element name="parameterKey" type="coffeeCommon:SimpleText128NotBlankType">
+                <xsd:annotation>
+                    <xsd:documentation>The unique identifier of the parameter.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="value" type="coffeeCommon:SimpleText255NotBlankType">
+                <xsd:annotation>
+                    <xsd:documentation>The value of the parameter.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- GROUPS -->
+
+    <!-- COMPLEX TYPES -->
+
+    <!-- REQUEST/RESPONSE COMPLEX TYPES -->
+    <xsd:complexType name="TemplateParameterRequestType">
+        <xsd:complexContent>
+            <xsd:extension base="coffeeCommonservice:BaseRequestType">
+                <xsd:sequence>
+                    <xsd:element name="template" type="TemplateParameterCoreType">
+                        <xsd:annotation>
+                            <xsd:documentation>The details of the template parameter.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="TemplateParameterResponseType">
+        <xsd:complexContent>
+            <xsd:extension base="coffeeCommonservice:BaseResponseType">
+                <xsd:sequence>
+                    <xsd:element name="template" type="TemplateParameterType">
+                        <xsd:annotation>
+                            <xsd:documentation>The details of the template parameter.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!-- REQUEST/RESPONSE ELEMENTS -->
+    <xsd:element name="TemplateParameterRequest">
+        <xsd:annotation>
+            <xsd:documentation>The request DTO for template parameter requests.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="TemplateParameterRequestType"/>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="TemplateParameterResponse">
+        <xsd:annotation>
+            <xsd:documentation>The response DTO for template parameter responses.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="TemplateParameterResponseType"/>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>
