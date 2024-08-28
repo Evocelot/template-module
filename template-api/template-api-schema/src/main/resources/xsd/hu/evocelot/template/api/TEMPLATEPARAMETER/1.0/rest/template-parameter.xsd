@@ -13,22 +13,17 @@
     <!-- SIMPLE TYPES -->
     <xsd:complexType name="TemplateParameterCoreType">
         <xsd:sequence>
-            <xsd:element name="templateKey" type="coffeeCommon:EntityIdType">
+            <xsd:element name="templateName" type="coffeeCommon:SimpleText100NotBlankType">
                 <xsd:annotation>
-                    <xsd:documentation>The key of the template, the owner of the parameter.</xsd:documentation>
+                    <xsd:documentation>The name of the template, the owner of the parameter</xsd:documentation>
                 </xsd:annotation>
             </xsd:element>
-            <xsd:element name="language" type="coffeeCommon:SimpleText5NotBlankType">
+            <xsd:element name="pattern" type="coffeeCommon:SimpleText128NotBlankType">
                 <xsd:annotation>
-                    <xsd:documentation>The language of the template</xsd:documentation>
+                    <xsd:documentation>The pattern of the parameter</xsd:documentation>
                 </xsd:annotation>
             </xsd:element>
-            <xsd:element name="parameterKey" type="coffeeCommon:SimpleText128NotBlankType">
-                <xsd:annotation>
-                    <xsd:documentation>The unique identifier of the parameter.</xsd:documentation>
-                </xsd:annotation>
-            </xsd:element>
-            <xsd:element name="defaultValue" type="coffeeCommon:SimpleText255NotBlankType">
+            <xsd:element name="defaultValue" type="coffeeCommon:SimpleText255NotBlankType" minOccurs="0">
                 <xsd:annotation>
                     <xsd:documentation>The default value of the parameter.</xsd:documentation>
                 </xsd:annotation>
@@ -52,12 +47,12 @@
 
     <xsd:complexType name="TemplateParameterRenderType">
         <xsd:sequence>
-            <xsd:element name="parameterKey" type="coffeeCommon:SimpleText128NotBlankType">
+            <xsd:element name="pattern" type="coffeeCommon:SimpleText128NotBlankType">
                 <xsd:annotation>
-                    <xsd:documentation>The unique identifier of the parameter.</xsd:documentation>
+                    <xsd:documentation>The pattern of the parameter</xsd:documentation>
                 </xsd:annotation>
             </xsd:element>
-            <xsd:element name="value" type="coffeeCommon:SimpleText255NotBlankType">
+            <xsd:element name="value" type="coffeeCommon:SimpleText255NotBlankType" minOccurs="0">
                 <xsd:annotation>
                     <xsd:documentation>The value of the parameter.</xsd:documentation>
                 </xsd:annotation>
@@ -74,7 +69,7 @@
         <xsd:complexContent>
             <xsd:extension base="coffeeCommonservice:BaseRequestType">
                 <xsd:sequence>
-                    <xsd:element name="template" type="TemplateParameterCoreType">
+                    <xsd:element name="templateParameter" type="TemplateParameterCoreType">
                         <xsd:annotation>
                             <xsd:documentation>The details of the template parameter.</xsd:documentation>
                         </xsd:annotation>
@@ -88,7 +83,7 @@
         <xsd:complexContent>
             <xsd:extension base="coffeeCommonservice:BaseResponseType">
                 <xsd:sequence>
-                    <xsd:element name="template" type="TemplateParameterType">
+                    <xsd:element name="templateParameter" type="TemplateParameterType">
                         <xsd:annotation>
                             <xsd:documentation>The details of the template parameter.</xsd:documentation>
                         </xsd:annotation>

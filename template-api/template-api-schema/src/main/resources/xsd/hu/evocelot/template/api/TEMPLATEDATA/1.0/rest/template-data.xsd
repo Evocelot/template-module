@@ -13,54 +13,25 @@
     <xsd:import namespace="http://api.template.evocelot.hu/TEMPLATEPARAMETER/1.0/rest/templateparameter"/>
 
     <!-- SIMPLE TYPES -->
-    <xsd:simpleType name="TemplateDataEnumType">
-        <xsd:restriction base="coffeeCommon:SimpleText20NotBlankType">
-            <xsd:enumeration value="TEXT">
-                <xsd:annotation>
-                    <xsd:documentation>For TEXT based templates.</xsd:documentation>
-                </xsd:annotation>
-            </xsd:enumeration>
-            <xsd:enumeration value="HTML">
-                <xsd:annotation>
-                    <xsd:documentation>For HTML based templates</xsd:documentation>
-                </xsd:annotation>
-            </xsd:enumeration>
-            <!--            <xsd:enumeration value="BINARY">-->
-            <!--                <xsd:annotation>-->
-            <!--                    <xsd:documentation>For file based templates</xsd:documentation>-->
-            <!--                </xsd:annotation>-->
-            <!--            </xsd:enumeration>-->
-        </xsd:restriction>
-    </xsd:simpleType>
 
     <!-- GROUPS -->
 
     <!-- COMPLEX TYPES -->
-    <xsd:complexType name="TemplateDataCoreType">
+    <xsd:complexType name="TemplateCoreType">
         <xsd:sequence>
-            <xsd:element name="templateKey" type="coffeeCommon:EntityIdType">
+            <xsd:element name="templateName" type="coffeeCommon:SimpleText100NotBlankType">
                 <xsd:annotation>
-                    <xsd:documentation>The identifier of the template.</xsd:documentation>
+                    <xsd:documentation>The unique identifier of the template</xsd:documentation>
                 </xsd:annotation>
             </xsd:element>
-            <xsd:element name="dataType" type="TemplateDataEnumType">
+            <xsd:element name="subject" type="coffeeCommon:SimpleText150NotBlankType">
                 <xsd:annotation>
-                    <xsd:documentation>The type of the template (enum).</xsd:documentation>
+                    <xsd:documentation>The subject of the template</xsd:documentation>
                 </xsd:annotation>
             </xsd:element>
-            <xsd:element name="language" type="coffeeCommon:SimpleText5NotBlankType">
+            <xsd:element name="content" type="xsd:string">
                 <xsd:annotation>
-                    <xsd:documentation>The language of the template.</xsd:documentation>
-                </xsd:annotation>
-            </xsd:element>
-            <xsd:element name="subject" type="coffeeCommon:SimpleText255NotBlankType" minOccurs="0">
-                <xsd:annotation>
-                    <xsd:documentation>The subject (used for the messages).</xsd:documentation>
-                </xsd:annotation>
-            </xsd:element>
-            <xsd:element name="data" type="xsd:string">
-                <xsd:annotation>
-                    <xsd:documentation>The template message.</xsd:documentation>
+                    <xsd:documentation>The content of the template</xsd:documentation>
                 </xsd:annotation>
             </xsd:element>
             <xsd:element name="validFrom" type="coffeeCommon:TimestampType">
@@ -76,9 +47,9 @@
         </xsd:sequence>
     </xsd:complexType>
 
-    <xsd:complexType name="TemplateDataType">
+    <xsd:complexType name="TemplateType">
         <xsd:complexContent>
-            <xsd:extension base="TemplateDataCoreType">
+            <xsd:extension base="TemplateCoreType">
                 <xsd:sequence>
                     <xsd:element name="templateId" type="coffeeCommon:EntityIdType">
                         <xsd:annotation>
@@ -92,11 +63,6 @@
 
     <xsd:complexType name="TemplateRenderType">
         <xsd:sequence>
-            <xsd:element name="language" type="coffeeCommon:SimpleText5NotBlankType">
-                <xsd:annotation>
-                    <xsd:documentation>The goal language of the rendered template.</xsd:documentation>
-                </xsd:annotation>
-            </xsd:element>
             <xsd:element name="templateParameters" type="templateParameter:TemplateParameterRenderType"
                          maxOccurs="unbounded" minOccurs="0">
                 <xsd:annotation>
@@ -108,37 +74,52 @@
 
     <xsd:complexType name="RenderedTemplateType">
         <xsd:sequence>
-            <xsd:element name="templateDataId" type="coffeeCommon:EntityIdType">
+            <xsd:element name="templateId" type="coffeeCommon:EntityIdType">
                 <xsd:annotation>
                     <xsd:documentation>The unique identifier of the rendered template.</xsd:documentation>
                 </xsd:annotation>
             </xsd:element>
-            <!--            <xsd:element name="fileName" type="coffeeCommon:SimpleText255NotBlankType" minOccurs="0">-->
-            <!--                <xsd:annotation>-->
-            <!--                    <xsd:documentation>The generated file name of the rendered template.</xsd:documentation>-->
-            <!--                </xsd:annotation>-->
-            <!--            </xsd:element>-->
             <xsd:element name="subject" type="coffeeCommon:SimpleText255NotBlankType" minOccurs="0">
                 <xsd:annotation>
                     <xsd:documentation>The subject of the rendered template.</xsd:documentation>
                 </xsd:annotation>
             </xsd:element>
-            <xsd:element name="data" type="xsd:string">
+            <xsd:element name="content" type="xsd:string">
                 <xsd:annotation>
-                    <xsd:documentation>The rendered template data.</xsd:documentation>
+                    <xsd:documentation>The rendered template content.</xsd:documentation>
                 </xsd:annotation>
             </xsd:element>
         </xsd:sequence>
     </xsd:complexType>
 
     <!-- REQUEST/RESPONSE COMPLEX TYPES -->
-    <xsd:complexType name="TemplateRequestType">
+    <xsd:complexType name="UpdateTemplateRequestType">
         <xsd:complexContent>
             <xsd:extension base="coffeeCommonservice:BaseRequestType">
                 <xsd:sequence>
-                    <xsd:element name="template" type="TemplateDataCoreType">
+                    <xsd:element name="template" type="TemplateCoreType">
                         <xsd:annotation>
                             <xsd:documentation>The details of the template.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="CreateTemplateRequestType">
+        <xsd:complexContent>
+            <xsd:extension base="coffeeCommonservice:BaseRequestType">
+                <xsd:sequence>
+                    <xsd:element name="template" type="TemplateCoreType">
+                        <xsd:annotation>
+                            <xsd:documentation>The details of the template.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="templateParameters" type="templateParameter:TemplateParameterCoreType"
+                                 minOccurs="0" maxOccurs="unbounded">
+                        <xsd:annotation>
+                            <xsd:documentation>The template parameters</xsd:documentation>
                         </xsd:annotation>
                     </xsd:element>
                 </xsd:sequence>
@@ -150,7 +131,7 @@
         <xsd:complexContent>
             <xsd:extension base="coffeeCommonservice:BaseResponseType">
                 <xsd:sequence>
-                    <xsd:element name="template" type="TemplateDataType">
+                    <xsd:element name="template" type="TemplateType">
                         <xsd:annotation>
                             <xsd:documentation>The details of the template.</xsd:documentation>
                         </xsd:annotation>
@@ -189,13 +170,24 @@
     </xsd:complexType>
 
     <!-- REQUEST/RESPONSE ELEMENTS -->
-    <xsd:element name="TemplateDataRequest">
+    <xsd:element name="UpdateTemplateDataRequest">
         <xsd:annotation>
-            <xsd:documentation>The request DTO for template requests.</xsd:documentation>
+            <xsd:documentation>The request DTO for updating template requests.</xsd:documentation>
         </xsd:annotation>
         <xsd:complexType>
             <xsd:complexContent>
-                <xsd:extension base="TemplateRequestType"/>
+                <xsd:extension base="UpdateTemplateRequestType"/>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="CreateTemplateDataRequest">
+        <xsd:annotation>
+            <xsd:documentation>The request DTO for creating templates requests.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="CreateTemplateRequestType"/>
             </xsd:complexContent>
         </xsd:complexType>
     </xsd:element>
