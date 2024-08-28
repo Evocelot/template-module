@@ -73,7 +73,7 @@ public class TemplateDataRestInformation {
     /**
      * {@value }
      */
-    public static final String RENDER_TEMPLATE_SUMMARY = "Render template data (text)";
+    public static final String RENDER_TEMPLATE_SUMMARY = "Render template data";
 
     /**
      * {@value }

@@ -6,7 +6,7 @@ file generation according to predefined templates.
 
 The module is based on Jakarta and Wildfly technology,
 which can be easily integrated with applications
-capable of HTTP communication
+capable of HTTP communication.
 
 == Technologies Used
 
@@ -82,7 +82,7 @@ mvn clean install -Ptestsuite
 
 === Database Setup
 
-To set up the project's database schema, use the following repository: https://github.com/Evocelot/liquibase-base
+To set up the project's database schema, use the following repository: https://github.com/Evocelot/template-module-liquibase
 
 As a first step, based on the provided repository, start the appropriate DBMS and update the database schema using Liquibase.
 
@@ -108,7 +108,7 @@ After that, attach our built application using the following command:
 .copy-war
 [source,bash]
 ----
-docker cp template-services/sample-jpa-service/target/sample-jpa-service-<VERSION>-SNAPSHOT.war evocelot-template-service:/home/icellmobilsoft/wildfly/standalone/deployments/ROOT.war
+docker cp template-services/template-service/target/template-service-<VERSION>-SNAPSHOT.war evocelot-template-service:/home/icellmobilsoft/wildfly/standalone/deployments/ROOT.war
 ----
 
 [NOTE]
