@@ -15,29 +15,30 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
 import hu.evocelot.template.api.common.path.TemplatePath;
 import hu.evocelot.template.api.common.restinformation.TemplateDataRestInformation;
-import hu.evocelot.template.api.templatedata._1_0.rest.templatedata.TemplateDataRequest;
+import hu.evocelot.template.api.templatedata._1_0.rest.templatedata.CreateTemplateDataRequest;
 import hu.evocelot.template.api.templatedata._1_0.rest.templatedata.TemplateDataResponse;
 import hu.evocelot.template.api.templatedata._1_0.rest.templatedata.TemplateRenderRequest;
 import hu.evocelot.template.api.templatedata._1_0.rest.templatedata.TemplateRenderResponse;
+import hu.evocelot.template.api.templatedata._1_0.rest.templatedata.UpdateTemplateDataRequest;
 import hu.evocelot.template.dto.constant.XsdConstants;
 import hu.icellmobilsoft.coffee.cdi.annotation.xml.ValidateXML;
 import hu.icellmobilsoft.coffee.dto.common.commonservice.BaseResponse;
 import hu.icellmobilsoft.coffee.se.api.exception.BaseException;
 
 /**
- * Rest interface for template data entity management.
+ * Rest interface for template entity management.
  *
  * @author mark.danisovszky
  * @since 0.1.0
  */
 @Tag(name = TemplateDataRestInformation.TAG, description = TemplateDataRestInformation.DESCRIPTION)
 @Path(TemplatePath.TEMPLATE_DATA_MANAGEMENT)
-public interface ITemplateDataRest {
+public interface ITemplateRest {
 
     /**
      * HTTP POST method for creating new template-data.
      *
-     * @param templateDataRequest - the request that contains information about the template to create.
+     * @param createTemplateDataRequest - the request that contains information about the template to create.
      * @return - with {@link TemplateDataResponse} that contains the details of the created template.
      * @throws BaseException - when an error occurs.
      */
@@ -46,7 +47,7 @@ public interface ITemplateDataRest {
             description = TemplateDataRestInformation.CREATE_TEMPLATE_DATA_DESCRIPTION)
     @Produces(value = {MediaType.APPLICATION_JSON, MediaType.TEXT_XML, MediaType.APPLICATION_XML})
     @Consumes(value = {MediaType.APPLICATION_JSON, MediaType.TEXT_XML, MediaType.APPLICATION_XML})
-    TemplateDataResponse createTemplateData(@ValidateXML(xsdPath = XsdConstants.SUPER_XSD_PATH) TemplateDataRequest templateDataRequest)
+    TemplateDataResponse createTemplateData(@ValidateXML(xsdPath = XsdConstants.SUPER_XSD_PATH) CreateTemplateDataRequest createTemplateDataRequest)
             throws BaseException;
 
     /**
@@ -68,8 +69,8 @@ public interface ITemplateDataRest {
     /**
      * HTTP POST method for updating the details of the template data.
      *
-     * @param templateDataId      - the id of the template data to update.
-     * @param templateDataRequest - the request that contains the details of the updated template data.
+     * @param templateDataId            - the id of the template data to update.
+     * @param updateTemplateDataRequest - the request that contains the details of the updated template data.
      * @return - with {@link TemplateDataResponse} that contains the details of the updated template data.
      * @throws BaseException - when an error occurs.
      */
@@ -82,7 +83,7 @@ public interface ITemplateDataRest {
     TemplateDataResponse updateTemplateData(
             @Parameter(description = TemplateDataRestInformation.TEMPLATE_DATA_ID_PARAM_DESCRIPTION, required = true) @PathParam(
                     TemplatePath.PARAM_ID) String templateDataId,
-            @ValidateXML(xsdPath = XsdConstants.SUPER_XSD_PATH) TemplateDataRequest templateDataRequest) throws BaseException;
+            @ValidateXML(xsdPath = XsdConstants.SUPER_XSD_PATH) UpdateTemplateDataRequest updateTemplateDataRequest) throws BaseException;
 
     /**
      * HTTP DELETE method for deleting template data.
